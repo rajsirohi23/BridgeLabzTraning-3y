@@ -16,6 +16,8 @@ public class SalesDashboard {
         int total = 0;
         int maxSales = 0;
         int maxDay = 0;
+        int minsale = Integer.MAX_VALUE;
+        int minday =0;
         boolean holiday = false;
 
         for (int i = 0; i < 10; i++) {
@@ -30,10 +32,16 @@ public class SalesDashboard {
             if (sales[i] == 0) {
                 holiday = true;
             }
+            if (sales[i] < minsale) {
+                minsale = sales[i];
+                minday = i + 1;
+
+            }
         }
 
         System.out.println("\nTotal Sales: " + total);
         System.out.println("Maximum Sales: " + maxSales + " (Day " + maxDay + ")");
+        System.out.println("Minimum Sales: " + minsale  + " (Day " + minday + ")");
         if (holiday) {
             System.out.println("Yes, the shop had a holiday (zero sales).");
         } else {
